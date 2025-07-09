@@ -12,15 +12,15 @@ export const socketHandler = (socket: Socket) => {
     const emitOneSensorReadingUseCase = new EmitOneSensorReadingUseCase(socketAdapter);
     const emitNotificationUseCase = new EmitNotificationUseCase(socketAdapter);
 
-    socket.on('new_many_sensor_readings', (user_id: number, payload: PayloadSensorReadings) => {
-        emitSensorReadingsUseCase.execute(user_id, payload);
+    socket.on('new_many_sensor_readings', ({ userID, sensorReadings }: { userID: number, sensorReadings: PayloadSensorReadings }) => {
+        emitSensorReadingsUseCase.execute(userID, sensorReadings);
     });
 
-    socket.on('new_one_sensor_reading', (user_id: number, payload: SensorReadings) => {
-        emitOneSensorReadingUseCase.execute(user_id, payload);
+    socket.on('new_one_sensor_reading', ({ userID, measurement }: { userID: number, measurement: SensorReadings }) => {
+        emitOneSensorReadingUseCase.execute(userID, measurement);
     });
 
-    socket.on('new_notification', (user_id: number, payload: Notification) => {
-        emitNotificationUseCase.execute(user_id, payload);
+    socket.on('new_notification', ({ userID, notification }: { userID: number, notification: Notification }) => {
+        emitNotificationUseCase.execute(userID, notification);
     })
 }

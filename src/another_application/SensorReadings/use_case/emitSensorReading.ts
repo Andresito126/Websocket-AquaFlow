@@ -10,15 +10,16 @@ export class EmitSensorReadingsUseCase {
     }
 
     public execute(user_id: number, payload: PayloadSensorReadings) {
-        let measurements!: Measurements;
+        console.log(user_id);
+        console.log(payload);
 
-        measurements.filtrer_id = payload.idFiltrer;
-
-        measurements.ph = payload.sensorReadings[0];
-        measurements.tds = payload.sensorReadings[1];
-        measurements.temperature = payload.sensorReadings[2];
-        measurements.turbidity = payload.sensorReadings[3];
-
+        let measurements: Measurements = {
+            filtrer_id: payload.idFiltrer,
+            ph: payload.sensorReadings[0],
+            tds: payload.sensorReadings[1],
+            temperature: payload.sensorReadings[2],
+            turbidity: payload.sensorReadings[3],
+        };
         this.ws.emitSensorReadings(user_id.toString(), measurements);
     }
 }

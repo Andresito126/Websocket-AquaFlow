@@ -13,6 +13,8 @@ const io = new Server (httpServer, {
 startDependencies(io)
 
 io.on("connection", (socket) => {
+    console.log("Usuario conectandose");
+
     socket.on('join_room', (room: number) => {
         socket.join(room.toString()); // Siendo la room, el ID del usuario
     });
