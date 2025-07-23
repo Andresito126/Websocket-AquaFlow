@@ -64,8 +64,4 @@ export class SocketAdapter implements SocketRepository {
     this.io.to(user_id).emit("send_notification", payload);
   }
 
-  public emitOneSensorReading(user_id: string, payload: SensorReadings) {
-    console.log("Emitiendo notificación al usuario", user_id, ":", payload);
-    this.io.to(user_id).emit("send_one_sensor_reading", payload)
-  }
 }

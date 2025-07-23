@@ -1,7 +1,7 @@
 import { SensorReadings } from "./SensorReadings";
 
 export interface Measurements {
-    filtrer_id: number,
+    filtrer_id: string,
     temperature: SensorReadings,
     tds: SensorReadings,
     ph: SensorReadings,

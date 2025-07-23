@@ -1,7 +1,7 @@
 import { SensorReadings } from "./SensorReadings";
 
 export interface PayloadSensorReadings {
-    idUser: number,
-    idFiltrer: number,
+    idUser: string,
+    idFiltrer: string,
     sensorReadings: SensorReadings[] 
 }

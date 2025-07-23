@@ -15,8 +15,8 @@ startDependencies(io)
 io.on("connection", (socket) => {
     console.log("Usuario conectandose");
 
-    socket.on('join_room', (room: number) => {
-        socket.join(room.toString()); // Siendo la room, el ID del usuario
+    socket.on('join_room', (room: string) => {
+        socket.join(room); // Siendo la room, el ID del usuario
     });
 
     socketHandler(socket);
